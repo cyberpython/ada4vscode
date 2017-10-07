@@ -1,0 +1,40 @@
+{
+    "name": "ada4vscode",
+    "displayName": "ada4vscode",
+    "description": "Ada (GNAT) language support for VS Code.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "publisher": "cyberpython",
+    "engines": {
+        "vscode": "^1.17.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ada",
+            "aliases": ["Ada", "ada"],
+            "extensions": [".adb",".ads"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ada",
+            "scopeName": "source.ada",
+            "path": "./syntaxes/ada.tmLanguage"
+        }],
+        "problemMatchers": [{
+            "name": "gnat",
+            "owner": "ada",
+            "fileLocation": ["relative", "${workspaceRoot}"],
+            "pattern": {
+                "regexp": "^(.*):(\\d+):(\\d+):\\s*(warning|error)?\\s*(.*)$",
+                "file": 1,
+                "line": 2,
+                "column": 3,
+                "severity": 4,
+                "message": 5
+            }
+        }]
+    }
+}
